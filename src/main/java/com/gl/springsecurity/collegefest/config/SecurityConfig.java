@@ -31,9 +31,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/login").permitAll()
-				.antMatchers("/students/new", "/students/edit/{id}", "/students/delete/{id}", "/students/print").hasRole("Admin")
-				.antMatchers("/students/view/{id}","/students/save").permitAll().and().formLogin()
-				.loginPage("/login").defaultSuccessUrl("/students").permitAll().and().csrf().disable();
+				.antMatchers("/students/new", "/students/edit/{id}", "/students/delete/{id}", "/students/print")
+				.hasRole("Admin").antMatchers("/students/view/{id}", "/students/save", "/students")
+				.hasAnyRole("Admin", "User").anyRequest().authenticated().and().formLogin().loginPage("/login")
+				.defaultSuccessUrl("/students").permitAll().and().logout().permitAll().and().csrf().disable();
 	}
 
 	@Bean

@@ -19,16 +19,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "authorities")
 public class Authority {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "username")
-    private Users user;
-    
-    @Column(name = "authority")
-    private String authority;
-    
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@ManyToOne
+	@JoinColumn(name = "username", referencedColumnName = "username")
+	private Users user;
+
+	@Column(name = "authority")
+	private String authority;
+
 }

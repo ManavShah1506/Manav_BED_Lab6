@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.gl.springsecurity.collegefest.entity.Student;
 
-public interface StudentDao extends JpaRepository<Student , Long>{
+public interface StudentDao extends JpaRepository<Student, Long> {
 
 }

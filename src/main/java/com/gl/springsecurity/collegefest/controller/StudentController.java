@@ -2,6 +2,7 @@ package com.gl.springsecurity.collegefest.controller;
 
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import com.gl.springsecurity.collegefest.entity.Student;
 import com.gl.springsecurity.collegefest.service.StudentService;
 
 @Controller
-@RequestMapping("students")
+@RequestMapping("/students")
 public class StudentController {
 	StudentService stdservice;
 
@@ -45,7 +46,7 @@ public class StudentController {
 		model.addAttribute("request", request);
 		return "student";
 	}
-	
+
 	@GetMapping("/view/{id}")
 	public String viewStd(Model model, @PathVariable Long id, HttpServletRequest request) {
 		Student student = stdservice.getStudent(id);
@@ -65,12 +66,11 @@ public class StudentController {
 		stdservice.saveStudent(student);
 		return "redirect:/students";
 	}
-	
+
 	@GetMapping("/print")
 	public String printAllStudents(Model model) {
 		model.addAttribute("stds", stdservice.getAllStudent());
-	    return "print-students";
+		return "print-students";
 	}
 
 }
-
